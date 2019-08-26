@@ -1,11 +1,3 @@
-# scs
-SQL条件组件
-
-> 减少if-else语句拼接字符串
-
-## 示例
-
-```go
 package main
 
 import (
@@ -41,14 +33,3 @@ func main() {
 	fmt.Println(sql.GetString(),sql.GetParams())     // 打印字符串  和 参数
 	// 输出: select * from demo where 1=1  and ( sex = ?  or sex = ? )  [1 2]
 }
-
-```
-
-## 不足，日后完善
-
-```
-1.  in 的支持，参数数组和切片
-2.  参数的属性化
-3.  根据结构体反射自动拼接字符串
-4.  update set 语句
-```
