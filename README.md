@@ -40,15 +40,19 @@ func main() {
 	})
 	fmt.Println(sql.GetString(),sql.GetParams())     // 打印字符串  和 参数
 	// 输出: select * from demo where 1=1  and ( sex = ?  or sex = ? )  [1 2]
-}
 
+	sql.Reset()
+	sql.AddOp("age",[]int{1,2,5,3},whr.AndIn)
+	fmt.Println(sql.GetString(),sql.GetParams())     // 打印字符串  和 参数
+	// 输出: select * from demo where 1=1  and age in ( ?,?,?,? ) [1 2 5 3]
+
+}
 ```
 
 ## 不足，日后完善
 
-```
-1.  in 的支持，参数数组和切片
+
+1.  ~~in 的支持，参数数组和切片~~
 2.  参数的属性化
 3.  根据结构体反射自动拼接字符串
 4.  update set 语句
-```
