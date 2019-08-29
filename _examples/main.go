@@ -38,4 +38,10 @@ func main() {
 	fmt.Println(sql.GetString(),sql.GetParams())     // 打印字符串  和 参数
 	// 输出: select * from demo where 1=1  and age in ( ?,?,?,? ) [1 2 5 3]
 
+	sql.Reset()
+	sql.InBlock("and name", func() {
+		sql.Adds("select name from user")
+	})
+	fmt.Println(sql.GetString())     // 打印字符串
+	// 输出: select * from demo where 1=1  and name in (select name from user)
 }

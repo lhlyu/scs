@@ -108,3 +108,17 @@ func (self *scs) NotExistsBlock(f func()) *scs{
 	return self
 }
 
+func (self *scs) InBlock(prefix string,f func()) *scs{
+	self.Adds(ONE_SPACE,prefix," in (")
+	f()
+	self.Adds(") ")
+	return self
+}
+
+func (self *scs) NotInBlock(prefix string,f func()) *scs{
+	self.Adds(ONE_SPACE,prefix," not in (")
+	f()
+	self.Adds(") ")
+	return self
+}
+
